@@ -1,0 +1,74 @@
+//esto tiene que estar en un archivo aparte
+public enum EnumArea {
+    Urbana = 0,
+    Centrica = 1, 
+    Country = 2
+}
+
+public class TDACiudad {
+  //atributos
+  private string ciudadName;
+  private Dictionary<EnumArea, TDAArea> areasCiudad;
+  
+  //constructor
+  public TDACiudad( string pCiudadName ) {
+    ciudadName = pCiudadName;
+    areasCiudad = new Dictionary<string, string>();
+  }
+  
+  //metodos basicos de una coleccion
+  public void AgregarArea( EnumArea eArea, TDAArea tdaArea) {
+    try() {
+        areasCiudad.Add(eArea, tdaArea);
+     }
+     catch( Excepcion e){
+         Console.WriteLine("An element with Key = \"txt\" already exists.");
+     }
+  }
+  
+  public void BorrarArea( EnumArea eArea ) {
+    areasCiudad.Remove(eArea);
+  }
+  
+  public void BuscarArea( EnumArea eArea ) {
+    areasCiudad.ContainsKey(eArea);
+  }
+  
+  //encapsulamiento
+  public string CiudadName {
+    get { return ciudadName; }
+    set { ciudadName = value; }
+  }
+  
+  public Dictionary<EnumArea, TDAArea> AreasCiudad {
+    get { return areasCiudad; }
+  }
+  
+  //esto tiene que estar en un archivo aparte.
+  class Program {
+    static void Main() {
+        TDACiudad ciudad;
+        EnumArea eArea;
+        TDAArea tdaArea;
+        
+        //van a preguntarle al usuario los datos necesarios para crear cada TDA
+        
+        //preguntar el nombre de la ciudad que se esta creando
+        ciudad = new TDACiudad( nameCiudad );
+        
+        //preguntar los datos necesarios para crear el TDA Area
+        tdaArea( por ejemplo superficie, u otros datos);
+        
+        //hacer un switch preguntando a que tipo de area pertenece el area que se esta ingresando
+        eArea = EnumArea.Urbana;
+        
+        ciudad.AgregarArea(tdaArea, eArea);
+        
+        //visualizan los datos ingresados
+        System.Console.WriteLine( ciudad.Nombre);
+        foreach( eArea in ciudad.AreasCiudad.Keys) {
+          TDAArea area = ciudad.BuscarArea(eArea);
+          System.Console.WriteLine(area.datosss);
+        }
+    }
+}
